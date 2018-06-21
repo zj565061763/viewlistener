@@ -35,7 +35,15 @@ abstract class BaseViewListener<T extends View>
     {
         if (mViewUpdater == null)
         {
-            mViewUpdater = createViewUpdater();
+            mViewUpdater = new OnPreDrawUpdater()
+            {
+                @Override
+                protected void onViewChanged(View newView, View oldView)
+                {
+                    super.onViewChanged(newView, oldView);
+                    BaseViewListener.this.onViewChanged(newView, oldView);
+                }
+            };
             mViewUpdater.setUpdatable(new Updater.Updatable()
             {
                 @Override
@@ -57,9 +65,8 @@ abstract class BaseViewListener<T extends View>
         return mViewUpdater;
     }
 
-    protected ViewUpdater createViewUpdater()
+    protected void onViewChanged(View newView, View oldView)
     {
-        return new OnPreDrawUpdater();
     }
 
     protected abstract void onUpdate(T view);
