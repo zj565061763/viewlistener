@@ -24,7 +24,7 @@ import com.fanwe.lib.updater.impl.OnPreDrawUpdater;
 /**
  * view的显示隐藏监听
  */
-public abstract class FViewVisibilityListener
+public abstract class FViewVisibilityListener<T extends View>
 {
     private ViewUpdater mViewUpdater;
     /**
@@ -37,9 +37,9 @@ public abstract class FViewVisibilityListener
      *
      * @return
      */
-    public final View getView()
+    public final T getView()
     {
-        return getViewUpdater().getView();
+        return (T) getViewUpdater().getView();
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class FViewVisibilityListener
      *
      * @param view
      */
-    public final void setView(View view)
+    public final void setView(T view)
     {
         getViewUpdater().setView(view);
         getViewUpdater().start();
@@ -81,7 +81,7 @@ public abstract class FViewVisibilityListener
 
     private void notifyIfNeed()
     {
-        final View view = getView();
+        final T view = getView();
         if (view == null)
             return;
 
@@ -99,5 +99,5 @@ public abstract class FViewVisibilityListener
      * @param visibility
      * @param view
      */
-    public abstract void onVisibilityChanged(int visibility, View view);
+    public abstract void onVisibilityChanged(int visibility, T view);
 }
