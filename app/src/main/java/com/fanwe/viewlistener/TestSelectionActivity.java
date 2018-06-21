@@ -27,10 +27,10 @@ public class TestSelectionActivity extends AppCompatActivity
             }
         });
 
-        mSelectionListener.setView(mButton);
+        mListener.setView(mButton);
     }
 
-    private final FViewSelectionListener<Button> mSelectionListener = new FViewSelectionListener<Button>()
+    private final FViewSelectionListener<Button> mListener = new FViewSelectionListener<Button>()
     {
         @Override
         public void onSelectionChanged(boolean selected, Button view)
