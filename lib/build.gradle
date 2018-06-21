@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 20180621
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.fanwe.android:updater:1.0.7'
+}
+
+publish {
+    userOrg = 'zj565061763'
+    groupId = 'com.fanwe.android'
+
+    artifactId = 'viewlistener'
+    publishVersion = '1.0.0'
+    desc = 'android view listener library'
+    website = 'https://github.com/zj565061763/viewlistener'
+}
+
+tasks.withType(Javadoc) {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+    }
+}
