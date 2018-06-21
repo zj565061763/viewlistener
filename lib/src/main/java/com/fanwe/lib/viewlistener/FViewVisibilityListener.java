@@ -72,7 +72,7 @@ public abstract class FViewVisibilityListener
                 public void onStateChanged(boolean started, Updater updater)
                 {
                     if (started)
-                        notifyIfNeed();
+                        updater.notifyUpdatable();
                 }
             });
         }
