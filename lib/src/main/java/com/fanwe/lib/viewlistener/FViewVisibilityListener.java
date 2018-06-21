@@ -17,71 +17,16 @@ package com.fanwe.lib.viewlistener;
 
 import android.view.View;
 
-import com.fanwe.lib.updater.Updater;
-import com.fanwe.lib.updater.ViewUpdater;
-import com.fanwe.lib.updater.impl.OnPreDrawUpdater;
-
 /**
  * view的显示隐藏监听
  */
-public abstract class FViewVisibilityListener<T extends View>
+public abstract class FViewVisibilityListener<T extends View> extends BaseViewListener<T>
 {
-    private ViewUpdater mViewUpdater;
-    /**
-     * 当前view的visibility状态
-     */
     private int mVisibility = View.VISIBLE;
 
-    /**
-     * 获得设置的view
-     *
-     * @return
-     */
-    public final T getView()
+    @Override
+    protected final void onUpdate(T view)
     {
-        return (T) getViewUpdater().getView();
-    }
-
-    /**
-     * 设置要监听的view
-     *
-     * @param view
-     */
-    public final void setView(T view)
-    {
-        getViewUpdater().setView(view);
-        getViewUpdater().start();
-    }
-
-    private ViewUpdater getViewUpdater()
-    {
-        if (mViewUpdater == null)
-        {
-            mViewUpdater = new OnPreDrawUpdater();
-            mViewUpdater.setUpdatable(new Updater.Updatable()
-            {
-                @Override
-                public void update()
-                {
-                    notifyIfNeed();
-                }
-            });
-            mViewUpdater.setOnStateChangeCallback(new Updater.OnStateChangeCallback()
-            {
-                @Override
-                public void onStateChanged(boolean started, Updater updater)
-                {
-                    if (started)
-                        updater.notifyUpdatable();
-                }
-            });
-        }
-        return mViewUpdater;
-    }
-
-    private void notifyIfNeed()
-    {
-        final T view = getView();
         if (view == null)
             return;
 
@@ -94,7 +39,7 @@ public abstract class FViewVisibilityListener<T extends View>
     }
 
     /**
-     * View的可见状态发生变化
+     * 可见状态变化
      *
      * @param visibility
      * @param view
