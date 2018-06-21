@@ -15,3 +15,26 @@ private final FViewVisibilityListener<Button> mListener = new FViewVisibilityLis
 // 设置要监听的view
 mListener.setView(view);
 ```
+
+# FViewSizeListener
+```java
+private final FViewSizeListener<Button> mListener = new FViewSizeListener<Button>()
+{
+    @Override
+    protected void onWidthChanged(int newWidth, int oldWidth, View view)
+    {
+        Log.i(TAG, "onWidthChanged:" + newWidth + "," + oldWidth);
+    }
+
+    @Override
+    protected void onHeightChanged(int newHeight, int oldHeight, View view)
+    {
+        Log.i(TAG, "onHeightChanged:" + newHeight + "," + oldHeight);
+    }
+};
+
+// 设置要监听的view
+mListener.setView(view);
+```
+<br>
+更多监听类的详细介绍请参考源码以及demo......
