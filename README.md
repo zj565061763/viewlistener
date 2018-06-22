@@ -2,9 +2,7 @@
 监听Android view的某个状态的变化，比如可见状态变化，选中状态变化，大小变化等
 
 # Gradle
-```
-implementation 'com.fanwe.android:viewlistener:1.0.3'
-```
+[![](https://jitpack.io/v/zj565061763/viewlistener.svg)](https://jitpack.io/#zj565061763/viewlistener)
 
 # FViewVisibilityListener
 ```java
