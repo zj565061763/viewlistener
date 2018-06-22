@@ -7,7 +7,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 20180622
-        versionName "1.0.2"
+        versionName "1.0.3"
     }
 
     buildTypes {
@@ -27,7 +27,7 @@ publish {
     groupId = 'com.fanwe.android'
 
     artifactId = 'viewlistener'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3'
     desc = 'android view listener library'
     website = 'https://github.com/zj565061763/viewlistener'
 }

@@ -43,7 +43,11 @@ abstract class BaseViewListener<T extends View>
     public final void setView(T view)
     {
         getViewUpdater().setView(view);
-        getViewUpdater().start();
+
+        if (view != null)
+            getViewUpdater().start();
+        else
+            getViewUpdater().stop();
     }
 
     private ViewUpdater getViewUpdater()
