@@ -3,7 +3,7 @@
 
 # Gradle
 ```
-implementation 'com.fanwe.android:viewlistener:1.0.0'
+implementation 'com.fanwe.android:viewlistener:1.0.1'
 ```
 
 # FViewVisibilityListener
