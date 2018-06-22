@@ -26,10 +26,9 @@ public abstract class FViewSizeListener<T extends View> extends BaseViewListener
     private int mHeight;
 
     @Override
-    protected void onViewChanged(View newView, View oldView)
+    protected void onViewChanged(View oldView, View newView)
     {
-        super.onViewChanged(newView, oldView);
-
+        super.onViewChanged(oldView, newView);
         mWidth = 0;
         mHeight = 0;
     }
