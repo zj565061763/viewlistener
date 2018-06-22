@@ -67,15 +67,6 @@ abstract class BaseViewListener<T extends View>
                     onUpdate(getView());
                 }
             });
-            mViewUpdater.setOnStateChangeCallback(new Updater.OnStateChangeCallback()
-            {
-                @Override
-                public void onStateChanged(boolean started, Updater updater)
-                {
-                    if (started)
-                        updater.notifyUpdatable();
-                }
-            });
         }
         return mViewUpdater;
     }
