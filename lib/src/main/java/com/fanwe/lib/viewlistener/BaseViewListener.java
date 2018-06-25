@@ -18,6 +18,7 @@ package com.fanwe.lib.viewlistener;
 import android.view.View;
 
 import com.fanwe.lib.viewupdater.ViewUpdater;
+import com.fanwe.lib.viewupdater.impl.OnPreDrawUpdater;
 
 abstract class BaseViewListener<T extends View>
 {
@@ -52,6 +53,7 @@ abstract class BaseViewListener<T extends View>
     {
         if (mViewUpdater == null)
         {
+            mViewUpdater = new OnPreDrawUpdater();
             mViewUpdater.setOnViewChangeCallback(new ViewUpdater.OnViewChangeCallback()
             {
                 @Override
