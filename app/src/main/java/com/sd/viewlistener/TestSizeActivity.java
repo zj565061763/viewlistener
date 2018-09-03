@@ -1,4 +1,4 @@
-package com.fanwe.viewlistener;
+package com.sd.viewlistener;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.fanwe.lib.viewlistener.FViewSizeListener;
+import com.sd.lib.viewlistener.FViewSizeListener;
 
 public class TestSizeActivity extends AppCompatActivity
 {

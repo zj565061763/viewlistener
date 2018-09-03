@@ -1,4 +1,4 @@
-package com.fanwe.viewlistener;
+package com.sd.viewlistener;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.fanwe.lib.viewlistener.FViewSelectionListener;
+import com.sd.lib.viewlistener.FViewSelectionListener;
 
 public class TestSelectionActivity extends AppCompatActivity
 {

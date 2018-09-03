@@ -1,4 +1,4 @@
-package com.fanwe.viewlistener;
+package com.sd.viewlistener;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.fanwe.lib.viewlistener.FViewVisibilityListener;
+import com.sd.lib.viewlistener.FViewVisibilityListener;
 
 public class TestVisibilityActivity extends AppCompatActivity
 {

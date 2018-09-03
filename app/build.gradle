@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.fanwe.viewlistener"
+        applicationId "com.sd.viewlistener"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
