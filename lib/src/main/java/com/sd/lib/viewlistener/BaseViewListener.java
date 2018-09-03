@@ -2,8 +2,8 @@ package com.sd.lib.viewlistener;
 
 import android.view.View;
 
-import com.fanwe.lib.viewupdater.ViewUpdater;
-import com.fanwe.lib.viewupdater.impl.OnPreDrawUpdater;
+import com.sd.lib.viewupdater.ViewUpdater;
+import com.sd.lib.viewupdater.impl.OnPreDrawUpdater;
 
 abstract class BaseViewListener<T extends View>
 {
