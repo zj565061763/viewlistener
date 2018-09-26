@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * 监听view宽高变化
  */
-public abstract class FViewSizeListener<T extends View> extends BaseViewListener<T>
+public abstract class FViewSizeListener<T extends View> extends FViewListener<T>
 {
     private int mWidth;
     private int mHeight;

@@ -7,7 +7,7 @@ import android.view.View;
  *
  * @param <T>
  */
-public abstract class FViewSelectionListener<T extends View> extends BaseViewListener<T>
+public abstract class FViewSelectionListener<T extends View> extends FViewListener<T>
 {
     private boolean mSelected = false;
 

@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * view的显示隐藏监听
  */
-public abstract class FViewVisibilityListener<T extends View> extends BaseViewListener<T>
+public abstract class FViewVisibilityListener<T extends View> extends FViewListener<T>
 {
     private int mVisibility = View.VISIBLE;
 
