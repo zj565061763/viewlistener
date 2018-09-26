@@ -11,14 +11,14 @@ public abstract class FViewDisplaySizeListener<T extends View> extends FViewSize
     private final Rect mRect = new Rect();
 
     @Override
-    protected final int onGetHeight(View view)
+    protected final int onGetHeight(T view)
     {
         view.getWindowVisibleDisplayFrame(mRect);
         return mRect.height();
     }
 
     @Override
-    protected final int onGetWidth(View view)
+    protected final int onGetWidth(T view)
     {
         view.getWindowVisibleDisplayFrame(mRect);
         return mRect.width();

@@ -48,17 +48,17 @@ public abstract class FViewSizeListener<T extends View> extends FViewListener<T>
         }
     }
 
-    protected int onGetWidth(View view)
+    protected int onGetWidth(T view)
     {
         return view.getWidth();
     }
 
-    protected int onGetHeight(View view)
+    protected int onGetHeight(T view)
     {
         return view.getHeight();
     }
 
-    protected abstract void onWidthChanged(int oldWidth, int newWidth, View view);
+    protected abstract void onWidthChanged(int oldWidth, int newWidth, T view);
 
-    protected abstract void onHeightChanged(int oldHeight, int newHeight, View view);
+    protected abstract void onHeightChanged(int oldHeight, int newHeight, T view);
 }

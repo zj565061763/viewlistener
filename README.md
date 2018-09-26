@@ -24,13 +24,13 @@ mListener.setView(view);
 private final FViewSizeListener<Button> mListener = new FViewSizeListener<Button>()
 {
     @Override
-    protected void onWidthChanged(int oldWidth, int newWidth, View view)
+    protected void onWidthChanged(int oldWidth, int newWidth, Button view)
     {
         Log.i(TAG, "onWidthChanged:" + oldWidth + "," + newWidth);
     }
 
     @Override
-    protected void onHeightChanged(int oldHeight, int newHeight, View view)
+    protected void onHeightChanged(int oldHeight, int newHeight, Button view)
     {
         Log.i(TAG, "onHeightChanged:" + oldHeight + "," + newHeight);
     }
