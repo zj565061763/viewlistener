@@ -20,6 +20,18 @@ public abstract class FViewSelectionListener<T extends View> extends FViewListen
     }
 
     @Override
+    public void update()
+    {
+        super.update();
+
+        final T view = getView();
+        if (view == null)
+            return;
+
+        onSelectionChanged(view.isSelected(), view);
+    }
+
+    @Override
     protected final void onUpdate(T view)
     {
         if (view == null)
@@ -39,5 +51,5 @@ public abstract class FViewSelectionListener<T extends View> extends FViewListen
      * @param selected
      * @param view
      */
-    public abstract void onSelectionChanged(boolean selected, T view);
+    protected abstract void onSelectionChanged(boolean selected, T view);
 }

@@ -18,6 +18,18 @@ public abstract class FViewVisibilityListener<T extends View> extends FViewListe
     }
 
     @Override
+    public void update()
+    {
+        super.update();
+
+        final T view = getView();
+        if (view == null)
+            return;
+
+        onVisibilityChanged(view.getVisibility(), view);
+    }
+
+    @Override
     protected final void onUpdate(T view)
     {
         if (view == null)
@@ -37,5 +49,5 @@ public abstract class FViewVisibilityListener<T extends View> extends FViewListe
      * @param visibility
      * @param view
      */
-    public abstract void onVisibilityChanged(int visibility, T view);
+    protected abstract void onVisibilityChanged(int visibility, T view);
 }

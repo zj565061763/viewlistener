@@ -11,6 +11,19 @@ public abstract class FViewSizeListener<T extends View> extends FViewListener<T>
     private int mHeight;
 
     @Override
+    public final void update()
+    {
+        super.update();
+
+        final T view = getView();
+        if (view == null)
+            return;
+
+        onWidthChanged(mWidth, onGetWidth(view), view);
+        onHeightChanged(mHeight, onGetHeight(view), view);
+    }
+
+    @Override
     protected final void onUpdate(T view)
     {
         if (view == null)

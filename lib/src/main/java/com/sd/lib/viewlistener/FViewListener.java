@@ -46,6 +46,13 @@ public abstract class FViewListener<T extends View>
         }
     }
 
+    /**
+     * 手动触发一次通知
+     */
+    public void update()
+    {
+    }
+
     private final View.OnAttachStateChangeListener mOnAttachStateChangeListener = new View.OnAttachStateChangeListener()
     {
         @Override

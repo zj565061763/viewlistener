@@ -44,7 +44,7 @@ public class TestVisibilityActivity extends AppCompatActivity
     private final FViewVisibilityListener<Button> mListener = new FViewVisibilityListener<Button>()
     {
         @Override
-        public void onVisibilityChanged(int visibility, Button view)
+        protected void onVisibilityChanged(int visibility, Button view)
         {
             Log.i(TAG, "onVisibilityChanged:" + visibility);
         }

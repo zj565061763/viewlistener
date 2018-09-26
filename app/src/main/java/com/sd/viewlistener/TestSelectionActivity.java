@@ -33,7 +33,7 @@ public class TestSelectionActivity extends AppCompatActivity
     private final FViewSelectionListener<Button> mListener = new FViewSelectionListener<Button>()
     {
         @Override
-        public void onSelectionChanged(boolean selected, Button view)
+        protected void onSelectionChanged(boolean selected, Button view)
         {
             if (selected)
                 view.setTextColor(Color.RED);
