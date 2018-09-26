@@ -30,16 +30,16 @@ public abstract class FViewSizeListener<T extends View> extends FViewListener<T>
         final int newWidth = onGetWidth(view);
         final int newHeight = onGetHeight(view);
 
-        if (newWidth != oldWidth)
+        if (oldWidth != newWidth)
         {
             mWidth = newWidth;
-            onWidthChanged(newWidth, oldWidth, view);
+            onWidthChanged(oldWidth, newWidth, view);
         }
 
-        if (newHeight != oldHeight)
+        if (oldHeight != newHeight)
         {
             mHeight = newHeight;
-            onHeightChanged(newHeight, oldHeight, view);
+            onHeightChanged(oldHeight, newHeight, view);
         }
     }
 
@@ -53,7 +53,7 @@ public abstract class FViewSizeListener<T extends View> extends FViewListener<T>
         return view.getHeight();
     }
 
-    protected abstract void onWidthChanged(int newWidth, int oldWidth, View view);
+    protected abstract void onWidthChanged(int oldWidth, int newWidth, View view);
 
-    protected abstract void onHeightChanged(int newHeight, int oldHeight, View view);
+    protected abstract void onHeightChanged(int oldHeight, int newHeight, View view);
 }
