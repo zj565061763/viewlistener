@@ -26,7 +26,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.zj565061763:viewupdater:1.1.0'
 }
 
 // 指定编码
