@@ -9,7 +9,15 @@ import android.view.View;
  */
 public abstract class FViewSelectionListener<T extends View> extends FViewListener<T>
 {
-    private boolean mSelected = false;
+    private boolean mSelected;
+
+    @Override
+    protected void onViewChanged(View oldView, View newView)
+    {
+        super.onViewChanged(oldView, newView);
+        if (newView != null)
+            mSelected = newView.isSelected();
+    }
 
     @Override
     protected final void onUpdate(T view)

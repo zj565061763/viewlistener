@@ -7,7 +7,15 @@ import android.view.View;
  */
 public abstract class FViewVisibilityListener<T extends View> extends FViewListener<T>
 {
-    private int mVisibility = View.VISIBLE;
+    private int mVisibility;
+
+    @Override
+    protected void onViewChanged(View oldView, View newView)
+    {
+        super.onViewChanged(oldView, newView);
+        if (newView != null)
+            mVisibility = newView.getVisibility();
+    }
 
     @Override
     protected final void onUpdate(T view)
