@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_size"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:onClick="onClick"
+        android:text="btn_size"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_visibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="btn_visibility"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="btn_selection"
+        android:textAllCaps="false" />
 
 </LinearLayout>
