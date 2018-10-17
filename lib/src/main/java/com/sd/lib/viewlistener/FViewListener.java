@@ -5,7 +5,7 @@ import android.view.ViewTreeObserver;
 
 import java.lang.ref.WeakReference;
 
-public abstract class FViewListener<T extends View>
+abstract class FViewListener<T extends View>
 {
     private WeakReference<T> mView;
 
@@ -29,28 +29,46 @@ public abstract class FViewListener<T extends View>
         final T old = getView();
         if (old != view)
         {
-            if (old != null)
-            {
-                old.removeOnAttachStateChangeListener(mOnAttachStateChangeListener);
-                registerViewTreeObserver(old, false);
-            }
+            start(false);
 
             mView = view == null ? null : new WeakReference<>(view);
             onViewChanged(old, view);
 
-            if (view != null)
-            {
-                view.addOnAttachStateChangeListener(mOnAttachStateChangeListener);
-                registerViewTreeObserver(view, true);
-            }
+            start(true);
         }
     }
 
     /**
-     * 手动触发一次通知
+     * 是否开始监听
+     *
+     * @param start true-开始，false-停止
      */
-    public void update()
+    public final void start(boolean start)
     {
+        final View view = getView();
+        if (view != null)
+        {
+            registerAttachStateChangeListener(view, start);
+            registerViewTreeObserver(view, start);
+        }
+    }
+
+    private void registerAttachStateChangeListener(View view, boolean register)
+    {
+        view.removeOnAttachStateChangeListener(mOnAttachStateChangeListener);
+        if (register)
+            view.addOnAttachStateChangeListener(mOnAttachStateChangeListener);
+    }
+
+    private void registerViewTreeObserver(View view, boolean register)
+    {
+        final ViewTreeObserver observer = view.getViewTreeObserver();
+        if (observer.isAlive())
+        {
+            observer.removeOnPreDrawListener(mOnPreDrawListener);
+            if (register)
+                observer.addOnPreDrawListener(mOnPreDrawListener);
+        }
     }
 
     private final View.OnAttachStateChangeListener mOnAttachStateChangeListener = new View.OnAttachStateChangeListener()
@@ -68,17 +86,6 @@ public abstract class FViewListener<T extends View>
         }
     };
 
-    private void registerViewTreeObserver(View view, boolean register)
-    {
-        final ViewTreeObserver observer = view.getViewTreeObserver();
-        if (observer.isAlive())
-        {
-            observer.removeOnPreDrawListener(mOnPreDrawListener);
-            if (register)
-                observer.addOnPreDrawListener(mOnPreDrawListener);
-        }
-    }
-
     private final ViewTreeObserver.OnPreDrawListener mOnPreDrawListener = new ViewTreeObserver.OnPreDrawListener()
     {
         @Override
@@ -90,6 +97,13 @@ public abstract class FViewListener<T extends View>
     };
 
     protected void onViewChanged(View oldView, View newView)
+    {
+    }
+
+    /**
+     * 手动触发一次通知
+     */
+    public void update()
     {
     }
 
