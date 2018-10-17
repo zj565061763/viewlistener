@@ -5,7 +5,7 @@ import android.view.ViewTreeObserver;
 
 import java.lang.ref.WeakReference;
 
-abstract class FViewListener<T extends View>
+public abstract class FViewListener<T extends View>
 {
     private WeakReference<T> mView;
 
