@@ -5,16 +5,16 @@ import android.view.ViewTreeObserver;
 
 import java.lang.ref.WeakReference;
 
-public abstract class FViewListener<T extends View>
+public abstract class FViewListener<V extends View>
 {
-    private WeakReference<T> mView;
+    private WeakReference<V> mView;
 
     /**
      * 返回设置的view
      *
      * @return
      */
-    public final T getView()
+    public final V getView()
     {
         return mView == null ? null : mView.get();
     }
@@ -24,9 +24,9 @@ public abstract class FViewListener<T extends View>
      *
      * @param view
      */
-    public final void setView(T view)
+    public final void setView(V view)
     {
-        final T old = getView();
+        final V old = getView();
         if (old != view)
         {
             start(false);
@@ -96,7 +96,7 @@ public abstract class FViewListener<T extends View>
         }
     };
 
-    protected void onViewChanged(View oldView, View newView)
+    protected void onViewChanged(V oldView, V newView)
     {
     }
 
@@ -107,5 +107,5 @@ public abstract class FViewListener<T extends View>
     {
     }
 
-    protected abstract void onUpdate(T view);
+    protected abstract void onUpdate(V view);
 }

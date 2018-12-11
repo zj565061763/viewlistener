@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.sd.lib.viewlistener.FViewSizeListener;
+import com.sd.lib.viewlistener.FViewPropertyListener;
 
 public class TestSizeActivity extends AppCompatActivity
 {
@@ -33,21 +33,37 @@ public class TestSizeActivity extends AppCompatActivity
             }
         });
 
-        mListener.setView(mButton);
+        mWidthListener.setView(mButton);
+        mHeightListener.setView(mButton);
     }
 
-    private final FViewSizeListener<Button> mListener = new FViewSizeListener<Button>()
+    private final FViewPropertyListener<Button, Integer> mWidthListener = new FViewPropertyListener<Button, Integer>()
     {
         @Override
-        protected void onWidthChanged(int oldWidth, int newWidth, Button view)
+        protected Integer getPropertyValue(Button view)
         {
-            Log.i(TAG, "onWidthChanged:" + oldWidth + "," + newWidth);
+            return view.getWidth();
         }
 
         @Override
-        protected void onHeightChanged(int oldHeight, int newHeight, Button view)
+        protected void onPropertyValueChanged(Integer value, Button view)
         {
-            Log.i(TAG, "onHeightChanged:" + oldHeight + "," + newHeight);
+            Log.i(TAG, "onWidthChanged:" + value);
+        }
+    };
+
+    private final FViewPropertyListener<Button, Integer> mHeightListener = new FViewPropertyListener<Button, Integer>()
+    {
+        @Override
+        protected Integer getPropertyValue(Button view)
+        {
+            return view.getHeight();
+        }
+
+        @Override
+        protected void onPropertyValueChanged(Integer value, Button view)
+        {
+            Log.i(TAG, "onHeightChanged:" + value);
         }
     };
 }

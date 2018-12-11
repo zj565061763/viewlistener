@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.sd.lib.viewlistener.FViewVisibilityListener;
+import com.sd.lib.viewlistener.FViewPropertyListener;
 
 public class TestVisibilityActivity extends AppCompatActivity
 {
@@ -41,12 +41,18 @@ public class TestVisibilityActivity extends AppCompatActivity
         mListener.setView(mButton);
     }
 
-    private final FViewVisibilityListener<Button> mListener = new FViewVisibilityListener<Button>()
+    private final FViewPropertyListener<Button, Integer> mListener = new FViewPropertyListener<Button, Integer>()
     {
         @Override
-        protected void onVisibilityChanged(int visibility, Button view)
+        protected Integer getPropertyValue(Button view)
         {
-            Log.i(TAG, "onVisibilityChanged:" + visibility);
+            return view.getVisibility();
+        }
+
+        @Override
+        protected void onPropertyValueChanged(Integer value, Button view)
+        {
+            Log.i(TAG, "onVisibilityChanged:" + value);
         }
     };
 }

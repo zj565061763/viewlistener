@@ -3,13 +3,16 @@ package com.sd.viewlistener;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.sd.lib.viewlistener.FViewSelectionListener;
+import com.sd.lib.viewlistener.FViewPropertyListener;
 
 public class TestSelectionActivity extends AppCompatActivity
 {
+    public static final String TAG = TestSelectionActivity.class.getSimpleName();
+
     private Button mButton;
 
     @Override
@@ -30,12 +33,20 @@ public class TestSelectionActivity extends AppCompatActivity
         mListener.setView(mButton);
     }
 
-    private final FViewSelectionListener<Button> mListener = new FViewSelectionListener<Button>()
+    private final FViewPropertyListener<Button, Boolean> mListener = new FViewPropertyListener<Button, Boolean>()
     {
         @Override
-        protected void onSelectionChanged(boolean selected, Button view)
+        protected Boolean getPropertyValue(Button view)
         {
-            if (selected)
+            return view.isSelected();
+        }
+
+        @Override
+        protected void onPropertyValueChanged(Boolean value, Button view)
+        {
+            Log.i(TAG, "onSelectionChanged:" + value);
+
+            if (value)
                 view.setTextColor(Color.RED);
             else
                 view.setTextColor(Color.BLACK);
