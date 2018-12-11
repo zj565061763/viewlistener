@@ -50,9 +50,9 @@ public class TestVisibilityActivity extends AppCompatActivity
         }
 
         @Override
-        protected void onPropertyValueChanged(Integer value, Button view)
+        protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
         {
-            Log.i(TAG, "onVisibilityChanged:" + value);
+            Log.i(TAG, "onVisibilityChanged:" + oldValue + " -> " + newValue);
         }
     };
 }

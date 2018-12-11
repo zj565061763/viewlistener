@@ -42,11 +42,11 @@ public class TestSelectionActivity extends AppCompatActivity
         }
 
         @Override
-        protected void onPropertyValueChanged(Boolean value, Button view)
+        protected void onPropertyValueChanged(Boolean oldValue, Boolean newValue, Button view)
         {
-            Log.i(TAG, "onSelectionChanged:" + value);
+            Log.i(TAG, "onSelectionChanged:" + oldValue + " -> " + newValue);
 
-            if (value)
+            if (newValue)
                 view.setTextColor(Color.RED);
             else
                 view.setTextColor(Color.BLACK);
