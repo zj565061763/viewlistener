@@ -2,9 +2,6 @@ package com.sd.lib.viewlistener;
 
 import android.view.View;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
 /**
  * View属性值变化监听
  *
@@ -14,20 +11,6 @@ import java.lang.reflect.Type;
 public abstract class FViewPropertyListener<V extends View, P> extends FViewListener<V>
 {
     private P mPropertyValue;
-    private final Class<P> mPropertyClass;
-
-    public FViewPropertyListener()
-    {
-        final ParameterizedType parameterizedType = (ParameterizedType) getClass().getGenericSuperclass();
-        final Type[] types = parameterizedType.getActualTypeArguments();
-        if (types != null && types.length > 1)
-        {
-            mPropertyClass = (Class<P>) types[1];
-        } else
-        {
-            throw new RuntimeException("generic type not found");
-        }
-    }
 
     @Override
     protected void onViewChanged(V oldView, V newView)
@@ -72,33 +55,7 @@ public abstract class FViewPropertyListener<V extends View, P> extends FViewList
      */
     protected boolean isEquals(P oldValue, P newValue)
     {
-        if (mPropertyClass == Integer.class)
-        {
-            return ((Integer) newValue).compareTo((Integer) oldValue) == 0;
-        } else if (mPropertyClass == Boolean.class)
-        {
-            return ((Boolean) newValue).compareTo((Boolean) oldValue) == 0;
-        } else if (mPropertyClass == Long.class)
-        {
-            return ((Long) newValue).compareTo((Long) oldValue) == 0;
-        } else if (mPropertyClass == Float.class)
-        {
-            return ((Float) newValue).compareTo((Float) oldValue) == 0;
-        } else if (mPropertyClass == Double.class)
-        {
-            return ((Double) newValue).compareTo((Double) oldValue) == 0;
-        } else if (mPropertyClass == Short.class)
-        {
-            return ((Short) newValue).compareTo((Short) oldValue) == 0;
-        } else if (mPropertyClass == Character.class)
-        {
-            return ((Character) newValue).compareTo((Character) oldValue) == 0;
-        } else if (mPropertyClass == Byte.class)
-        {
-            return ((Byte) newValue).compareTo((Byte) oldValue) == 0;
-        }
-
-        return oldValue == newValue;
+        return (oldValue == newValue) || (oldValue != null && oldValue.equals(newValue));
     }
 
     /**
