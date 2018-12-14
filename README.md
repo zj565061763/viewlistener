@@ -4,14 +4,20 @@
 # Gradle
 [![](https://jitpack.io/v/zj565061763/viewlistener.svg)](https://jitpack.io/#zj565061763/viewlistener)
 
-# FViewVisibilityListener
+# 监听可见状态变化
 ```java
-private final FViewVisibilityListener<Button> mListener = new FViewVisibilityListener<Button>()
+private final FViewPropertyListener<Button, Integer> mListener = new FViewPropertyListener<Button, Integer>()
 {
     @Override
-    protected void onVisibilityChanged(int visibility, Button view)
+    protected Integer getPropertyValue(Button view)
     {
-        Log.i(TAG, "onVisibilityChanged:" + visibility);
+        return view.getVisibility();
+    }
+
+    @Override
+    protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
+    {
+        Log.i(TAG, "onVisibilityChanged:" + oldValue + " -> " + newValue);
     }
 };
 
@@ -19,25 +25,43 @@ private final FViewVisibilityListener<Button> mListener = new FViewVisibilityLis
 mListener.setView(view);
 ```
 
-# FViewSizeListener
+# 监听宽度变化
 ```java
-private final FViewSizeListener<Button> mListener = new FViewSizeListener<Button>()
+private final FViewPropertyListener<Button, Integer> mListener = new FViewPropertyListener<Button, Integer>()
 {
     @Override
-    protected void onWidthChanged(int oldWidth, int newWidth, Button view)
+    protected Integer getPropertyValue(Button view)
     {
-        Log.i(TAG, "onWidthChanged:" + oldWidth + "," + newWidth);
+        return view.getWidth();
     }
 
     @Override
-    protected void onHeightChanged(int oldHeight, int newHeight, Button view)
+    protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
     {
-        Log.i(TAG, "onHeightChanged:" + oldHeight + "," + newHeight);
+        Log.i(TAG, "onWidthChanged:" + oldValue + " -> " + newValue);
     }
 };
 
 // 设置要监听的view
 mListener.setView(view);
 ```
-<br>
-更多监听类的详细介绍请参考源码以及demo......
+# 监听选中状态变化
+```java
+private final FViewPropertyListener<Button, Boolean> mListener = new FViewPropertyListener<Button, Boolean>()
+{
+    @Override
+    protected Boolean getPropertyValue(Button view)
+    {
+        return view.isSelected();
+    }
+
+    @Override
+    protected void onPropertyValueChanged(Boolean oldValue, Boolean newValue, Button view)
+    {
+        Log.i(TAG, "onSelectionChanged:" + oldValue + " -> " + newValue);
+    }
+};
+
+// 设置要监听的view
+mListener.setView(view);
+```
