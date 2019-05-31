@@ -20,7 +20,7 @@
 
         <activity android:name=".TestSizeActivity"/>
         <activity android:name=".TestVisibilityActivity"/>
-        <activity android:name=".TestSelectionActivity"/>
+        <activity android:name=".TestSelectActivity"/>
 
     </application>
 

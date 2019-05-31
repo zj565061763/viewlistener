@@ -21,11 +21,11 @@
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/btn_selection"
+        android:id="@+id/btn_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="btn_selection"
+        android:text="btn_select"
         android:textAllCaps="false" />
 
 </LinearLayout>

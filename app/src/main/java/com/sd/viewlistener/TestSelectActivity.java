@@ -7,11 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.sd.lib.viewlistener.FViewPropertyListener;
+import com.sd.lib.viewlistener.ext.booleans.FViewSelectListener;
 
-public class TestSelectionActivity extends AppCompatActivity
+public class TestSelectActivity extends AppCompatActivity
 {
-    public static final String TAG = TestSelectionActivity.class.getSimpleName();
+    public static final String TAG = TestSelectActivity.class.getSimpleName();
 
     private Button mButton;
 
@@ -19,7 +19,7 @@ public class TestSelectionActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_selection);
+        setContentView(R.layout.activity_test_select);
         mButton = findViewById(R.id.btn);
         mButton.setOnClickListener(new View.OnClickListener()
         {
@@ -30,21 +30,15 @@ public class TestSelectionActivity extends AppCompatActivity
             }
         });
 
-        mListener.setView(mButton);
+        mSelectListener.setView(mButton);
     }
 
-    private final FViewPropertyListener<Button, Boolean> mListener = new FViewPropertyListener<Button, Boolean>()
+    private final FViewSelectListener<Button> mSelectListener = new FViewSelectListener<Button>()
     {
-        @Override
-        protected Boolean getPropertyValue(Button view)
-        {
-            return view.isSelected();
-        }
-
         @Override
         protected void onPropertyValueChanged(Button view, Boolean oldValue, Boolean newValue)
         {
-            Log.i(TAG, "onSelectionChanged:" + oldValue + " -> " + newValue);
+            Log.i(TAG, "onSelectChanged:" + oldValue + " -> " + newValue);
 
             if (newValue)
                 view.setTextColor(Color.RED);

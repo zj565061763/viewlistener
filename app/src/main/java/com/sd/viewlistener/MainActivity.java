@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_visibility:
                 startActivity(new Intent(this, TestVisibilityActivity.class));
                 break;
-            case R.id.btn_selection:
-                startActivity(new Intent(this, TestSelectionActivity.class));
+            case R.id.btn_select:
+                startActivity(new Intent(this, TestSelectActivity.class));
                 break;
         }
     }
