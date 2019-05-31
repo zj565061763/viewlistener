@@ -42,7 +42,7 @@ public class TestSelectionActivity extends AppCompatActivity
         }
 
         @Override
-        protected void onPropertyValueChanged(Boolean oldValue, Boolean newValue, Button view)
+        protected void onPropertyValueChanged(Button view, Boolean oldValue, Boolean newValue)
         {
             Log.i(TAG, "onSelectionChanged:" + oldValue + " -> " + newValue);
 

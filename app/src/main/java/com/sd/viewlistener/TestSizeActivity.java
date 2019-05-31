@@ -46,7 +46,7 @@ public class TestSizeActivity extends AppCompatActivity
         }
 
         @Override
-        protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
+        protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
         {
             Log.i(TAG, "onWidthChanged:" + oldValue + " -> " + newValue);
         }
@@ -61,7 +61,7 @@ public class TestSizeActivity extends AppCompatActivity
         }
 
         @Override
-        protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
+        protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
         {
             Log.i(TAG, "onHeightChanged:" + oldValue + " -> " + newValue);
         }

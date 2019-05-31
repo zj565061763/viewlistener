@@ -27,7 +27,7 @@ public abstract class FViewPropertyListener<V extends View, P> extends FViewList
 
         final V view = getView();
         if (view != null)
-            onPropertyValueChanged(mPropertyValue, getPropertyValue(view), view);
+            onPropertyValueChanged(view, mPropertyValue, getPropertyValue(view));
     }
 
     @Override
@@ -42,7 +42,7 @@ public abstract class FViewPropertyListener<V extends View, P> extends FViewList
         if (!isEquals(oldValue, newValue))
         {
             mPropertyValue = newValue;
-            onPropertyValueChanged(oldValue, newValue, view);
+            onPropertyValueChanged(view, oldValue, newValue);
         }
     }
 
@@ -69,9 +69,9 @@ public abstract class FViewPropertyListener<V extends View, P> extends FViewList
     /**
      * 属性值变化
      *
+     * @param view
      * @param oldValue
      * @param newValue
-     * @param view
      */
-    protected abstract void onPropertyValueChanged(P oldValue, P newValue, V view);
+    protected abstract void onPropertyValueChanged(V view, P oldValue, P newValue);
 }
