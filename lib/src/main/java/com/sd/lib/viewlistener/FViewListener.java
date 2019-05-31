@@ -29,28 +29,39 @@ public abstract class FViewListener<V extends View>
         final V old = getView();
         if (old != view)
         {
-            start(false);
+            stop();
 
             mView = view == null ? null : new WeakReference<>(view);
             onViewChanged(old, view);
 
-            start(true);
+            start();
         }
     }
 
     /**
-     * 是否开始监听
-     *
-     * @param start true-开始，false-停止
+     * 开始监听
      */
-    public final void start(boolean start)
+    public final void start()
     {
         final View view = getView();
-        if (view != null)
-        {
-            registerAttachStateChangeListener(view, start);
-            registerViewTreeObserver(view, start);
-        }
+        if (view == null)
+            return;
+
+        registerAttachStateChangeListener(view, true);
+        registerViewTreeObserver(view, true);
+    }
+
+    /**
+     * 停止监听
+     */
+    public final void stop()
+    {
+        final View view = getView();
+        if (view == null)
+            return;
+
+        registerAttachStateChangeListener(view, false);
+        registerViewTreeObserver(view, false);
     }
 
     private void registerAttachStateChangeListener(View view, boolean register)
