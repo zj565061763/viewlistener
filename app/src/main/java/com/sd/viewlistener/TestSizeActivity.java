@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.sd.lib.viewlistener.FViewPropertyListener;
+import com.sd.lib.viewlistener.ext.integers.FViewHeightListener;
+import com.sd.lib.viewlistener.ext.integers.FViewWidthListener;
 
 public class TestSizeActivity extends AppCompatActivity
 {
@@ -37,14 +38,8 @@ public class TestSizeActivity extends AppCompatActivity
         mHeightListener.setView(mButton);
     }
 
-    private final FViewPropertyListener<Button, Integer> mWidthListener = new FViewPropertyListener<Button, Integer>()
+    private final FViewWidthListener<Button> mWidthListener = new FViewWidthListener<Button>()
     {
-        @Override
-        protected Integer getPropertyValue(Button view)
-        {
-            return view.getWidth();
-        }
-
         @Override
         protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
         {
@@ -52,14 +47,8 @@ public class TestSizeActivity extends AppCompatActivity
         }
     };
 
-    private final FViewPropertyListener<Button, Integer> mHeightListener = new FViewPropertyListener<Button, Integer>()
+    private final FViewHeightListener<Button> mHeightListener = new FViewHeightListener<Button>()
     {
-        @Override
-        protected Integer getPropertyValue(Button view)
-        {
-            return view.getHeight();
-        }
-
         @Override
         protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
         {
