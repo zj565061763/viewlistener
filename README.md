@@ -6,14 +6,8 @@
 
 # 监听可见状态变化
 ```java
-private final FViewPropertyListener<Button, Integer> mListener = new FViewPropertyListener<Button, Integer>()
+private final FViewVisibilityListener<Button> mVisibilityListener = new FViewVisibilityListener<Button>()
 {
-    @Override
-    protected Integer getPropertyValue(Button view)
-    {
-        return view.getVisibility();
-    }
-
     @Override
     protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
     {
@@ -22,19 +16,13 @@ private final FViewPropertyListener<Button, Integer> mListener = new FViewProper
 };
 
 // 设置要监听的view
-mListener.setView(view);
+mVisibilityListener.setView(view);
 ```
 
 # 监听宽度变化
 ```java
-private final FViewPropertyListener<Button, Integer> mListener = new FViewPropertyListener<Button, Integer>()
+private final FViewWidthListener<Button> mWidthListener = new FViewWidthListener<Button>()
 {
-    @Override
-    protected Integer getPropertyValue(Button view)
-    {
-        return view.getWidth();
-    }
-
     @Override
     protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
     {
@@ -43,25 +31,46 @@ private final FViewPropertyListener<Button, Integer> mListener = new FViewProper
 };
 
 // 设置要监听的view
-mListener.setView(view);
+mWidthListener.setView(view);
 ```
 # 监听选中状态变化
 ```java
-private final FViewPropertyListener<Button, Boolean> mListener = new FViewPropertyListener<Button, Boolean>()
+private final FViewSelectListener<Button> mSelectListener = new FViewSelectListener<Button>()
 {
     @Override
-    protected Boolean getPropertyValue(Button view)
+    protected void onPropertyValueChanged(Button view, Boolean oldValue, Boolean newValue)
     {
-        return view.isSelected();
-    }
+        Log.i(TAG, "onSelectChanged:" + oldValue + " -> " + newValue);
 
-    @Override
-    protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
-    {
-        Log.i(TAG, "onSelectionChanged:" + oldValue + " -> " + newValue);
+        if (newValue)
+            view.setTextColor(Color.RED);
+        else
+            view.setTextColor(Color.BLACK);
     }
 };
 
 // 设置要监听的view
-mListener.setView(view);
+mSelectListener.setView(view);
+```
+
+# 自定义监听
+```java
+private final FViewPropertyListener<Button, Float> mXListener = new FViewPropertyListener<Button, Float>()
+{
+    @Override
+    protected Float getPropertyValue(Button view)
+    {
+        // 返回监听的值
+        return view.getX();
+    }
+
+    @Override
+    protected void onPropertyValueChanged(Button view, Float oldValue, Float newValue)
+    {
+        Log.i(TAG, "onXChanged:" + oldValue + " -> " + newValue);
+    }
+};
+
+// 设置要监听的view
+mXListener.setView(view);
 ```
