@@ -15,7 +15,7 @@ private final FViewPropertyListener<Button, Integer> mListener = new FViewProper
     }
 
     @Override
-    protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
+    protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
     {
         Log.i(TAG, "onVisibilityChanged:" + oldValue + " -> " + newValue);
     }
@@ -36,7 +36,7 @@ private final FViewPropertyListener<Button, Integer> mListener = new FViewProper
     }
 
     @Override
-    protected void onPropertyValueChanged(Integer oldValue, Integer newValue, Button view)
+    protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
     {
         Log.i(TAG, "onWidthChanged:" + oldValue + " -> " + newValue);
     }
@@ -56,7 +56,7 @@ private final FViewPropertyListener<Button, Boolean> mListener = new FViewProper
     }
 
     @Override
-    protected void onPropertyValueChanged(Boolean oldValue, Boolean newValue, Button view)
+    protected void onPropertyValueChanged(Button view, Integer oldValue, Integer newValue)
     {
         Log.i(TAG, "onSelectionChanged:" + oldValue + " -> " + newValue);
     }
