@@ -102,7 +102,9 @@ public abstract class FViewListener<V extends View>
         @Override
         public boolean onPreDraw()
         {
-            onUpdate(getView());
+            final V view = getView();
+            if (view != null)
+                onUpdate(view);
             return true;
         }
     };
